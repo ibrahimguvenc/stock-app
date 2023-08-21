@@ -1,18 +1,18 @@
-import { useEffect, useState } from "react"
-import Typography from "@mui/material/Typography"
-import Button from "@mui/material/Button"
-import { useSelector } from "react-redux"
-import useStockCall from "../hooks/useStockCall"
-import ProductModal from "../components/ProductModal"
-import ProductTable from "../components/Producttable"
+import { useEffect, useState } from "react";
+import Typography from "@mui/material/Typography";
+import Button from "@mui/material/Button";
+import { useSelector } from "react-redux";
+import useStockCall from "../hooks/useStockCall";
+import ProductModal from "../components/ProductModal";
+import ProductTable from "../components/Producttable.jsx";
 
 const Products = () => {
-  const { getStockData, getProdCatBrands } = useStockCall()
-  const { products } = useSelector((state) => state.stock)
+  const { getStockData, getProdCatBrands } = useStockCall();
+  const { products } = useSelector((state) => state.stock);
 
-  const [open, setOpen] = useState(false)
-  const handleOpen = () => setOpen(true)
-  const handleClose = () => setOpen(false)
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
 
   useEffect(() => {
     // getStockData("products")
@@ -20,8 +20,8 @@ const Products = () => {
     // getStockData("brands")
 
     //! Promise.all ile es zamanli istek atilan fonks.
-    getProdCatBrands()
-  }, [])
+    getProdCatBrands();
+  }, []);
 
   return (
     <div>
@@ -35,7 +35,7 @@ const Products = () => {
       <ProductModal open={open} handleClose={handleClose} />
       <ProductTable />
     </div>
-  )
-}
+  );
+};
 
-export default Products
+export default Products;
